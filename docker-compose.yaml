@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: postgres
+    expose:
+      - "5432" 
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:9090"
+    environment:
+      SPRING_APPLICATION_JSON: '{
+      "server.port"                : 9090,
+      "spring.jpa.database"        : "POSTGRESQL",
+      "spring.datasource.platform" : "postgres",
+      "spring.datasource.url"      : "jdbc:postgresql://db:5432/postgres",
+      "spring.datasource.username" : "postgres",
+      "spring.datasource.password" : "postgres",
+      "spring.jpa.show-sql"        : "true",
+      "spring.jpa.generate-ddl"    : "true",
+      "spring.jpa.hibernate.ddl-auto" : "create-drop",
+      "spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation" : "true"
+    }'
