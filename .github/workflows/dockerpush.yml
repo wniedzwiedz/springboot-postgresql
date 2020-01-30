@@ -1,10 +1,6 @@
 name: Docker
 
-on:
-  push:
-    # Publish `master` as Docker `latest` image.
-    branches:
-      - init-docker
+on: [push]
 
     # Publish `v1.2.3` tags as releases.
     tags:
@@ -71,4 +67,4 @@ jobs:
 
           docker tag image $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
-          ocker push docker.pkg.github.com/wniedzwiedz/springboot-postgresql/$IMAGE_ID:$VERSION
+          docker push docker.pkg.github.com/wniedzwiedz/springboot-postgresql/$IMAGE_ID:$VERSION
