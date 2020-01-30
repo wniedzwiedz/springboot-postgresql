@@ -37,7 +37,7 @@ public class CustomerController {
 	}
 	@PostMapping("/create")
 	public String create(@RequestBody CustomerUI customer){
-		// save a single Customer
+		// save a single Customer bubububub
 		repository.save(new Customer(customer.getFirstName(), customer.getLastName()));
 
 		return "Customer is created";
