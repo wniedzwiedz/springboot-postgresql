@@ -71,3 +71,4 @@ jobs:
 
           docker tag image $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+          ocker push docker.pkg.github.com/wniedzwiedz/springboot-postgresql/$IMAGE_ID:$VERSION
